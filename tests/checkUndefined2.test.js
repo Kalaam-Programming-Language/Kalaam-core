@@ -1,5 +1,5 @@
 import Compile from "../Compiler/main";
-import { undefined2 } from "../exampleCodes/checkundefined2";
+import { undefined2 } from "../testCodes/checkundefined2";
 
 test("Checks Undefined error", () => {
   const expected = ["Cannot set c to undefined : b is undefined "];

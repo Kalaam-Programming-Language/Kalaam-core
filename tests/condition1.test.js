@@ -1,6 +1,6 @@
 import Compile from "../Compiler/main";
-import { condition1 } from "../exampleCodes/condition1";
-import Data from "../exampleCodes/kalaamData";
+import { condition1 } from "../testCodes/condition1";
+import Data from "../testCodes/kalaamData";
 
 test("Testing For loop", () => {
   const expected = ["That works too."];

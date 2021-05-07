@@ -1,5 +1,5 @@
 import Compile from "../Compiler/main";
-import { undefined1 } from "../exampleCodes/checkUndefined1";
+import { undefined1 } from "../testCodes/checkUndefined1";
 
 test("Checks Undefined error", () => {
   const expected = ["ReferenceError: b is not defined"];

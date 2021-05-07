@@ -1,6 +1,6 @@
 import Compile from "../Compiler/main";
-import { function1 } from "../exampleCodes/function1";
-import Data from "../exampleCodes/kalaamData";
+import { function1 } from "../testCodes/function1";
+import Data from "../testCodes/kalaamData";
 
 test("function testing", () => {
   const expected = ["Sachin Tendulkar"];

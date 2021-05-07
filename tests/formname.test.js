@@ -1,5 +1,5 @@
 import Compile from "../Compiler/main";
-import { formname } from "../exampleCodes/formname";
+import { formname } from "../testCodes/formname";
 
 test("Testing For loop", () => {
   const expected = ["t", "te", "tes", "test"];

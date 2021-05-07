@@ -1,6 +1,6 @@
 import Compile from "../Compiler/main";
-import { executionstack1 } from "../exampleCodes/executionstack1";
-import Data from "../exampleCodes/kalaamData";
+import { executionstack1 } from "../testCodes/executionstack1";
+import Data from "../testCodes/kalaamData";
 
 test("checks execution stack", () => {
   const expected = [

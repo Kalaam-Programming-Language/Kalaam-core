@@ -1,13 +1,14 @@
 {
   "name": "kalaam",
   "version": "1.1.0",
-  "description": "Interpretor of Kalaam, the programming language in Hindi",
+  "description": "Interpretor for Kalaam, the programming language in Hindi",
   "main": "Compiler/main",
   "scripts": {
     "test": "jest"
   },
   "author": "Swanand Kadam",
   "license": "MIT",
+  "files": ["Scripts","Compiler","HelperLibrary","PushTokens","scanner","Scripts","TypeCheck"],
   "devDependencies": {
     "@babel/preset-env": "^7.14.1",
     "babel": "^6.23.0",

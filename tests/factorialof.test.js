@@ -1,5 +1,5 @@
 import Compile from "../Compiler/main";
-import { factorialOf } from "../exampleCodes/factorialOf";
+import { factorialOf } from "../testCodes/factorialOf";
 
 test("Checks factorial", () => {
   const expected = ["Factorial of  5  is  120"];

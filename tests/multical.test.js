@@ -1,6 +1,6 @@
 import Compile from "../Compiler/main";
-import { multical } from "../exampleCodes/multical";
-import Data from "../exampleCodes/kalaamData";
+import { multical } from "../testCodes/multical";
+import Data from "../testCodes/kalaamData";
 
 test("Testing multi calculation", () => {
   const expected = ["50"];

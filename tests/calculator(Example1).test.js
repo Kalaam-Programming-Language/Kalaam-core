@@ -1,6 +1,6 @@
 import Compile from "../Compiler/main";
-import { calculator } from "../exampleCodes/calculatorEx1";
-import Data from "../exampleCodes/kalaamData";
+import { calculator } from "../testCodes/calculatorEx1";
+import Data from "../testCodes/kalaamData";
 
 test("compiles calculator sample code from examples", () => {
   const expected = ["FirstValue is 10", "SecondValue is 20", "Output is  30"];
