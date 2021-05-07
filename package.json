@@ -6,9 +6,17 @@
   "scripts": {
     "test": "jest"
   },
-  "author": "Swanand Kadam",
+  "author": "Swanand Kadam <swanandkadam828@gmail.com>",
   "license": "MIT",
-  "files": ["Scripts","Compiler","HelperLibrary","PushTokens","scanner","Scripts","TypeCheck"],
+  "files": [
+    "Scripts",
+    "Compiler",
+    "HelperLibrary",
+    "PushTokens",
+    "scanner",
+    "Scripts",
+    "TypeCheck"
+  ],
   "devDependencies": {
     "@babel/preset-env": "^7.14.1",
     "babel": "^6.23.0",
