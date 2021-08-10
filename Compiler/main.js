@@ -409,7 +409,7 @@ export default function Compile(sourcecode) {
             let prevEl = cleaned_sourcedata.prevElement(i);
 
             let token_type = scanner(cleaned_sourcedata, i, tokens);
-
+            console.log('token_type:', token_type)
             //Push variables to tokens
             //Format: {type: "variable", value: "ReverseString"}
 
@@ -752,7 +752,7 @@ export default function Compile(sourcecode) {
             let token_type = mutable_tokens[j].type;
             let token_subtype = mutable_tokens[j].subtype;
 
-            let type = token === 'दिखाए' || token_type === 'operator' ? token_subtype : token_type;
+            let type = token === ActiveLangugaeKeywords.Print || token_type === 'operator' ? token_subtype : token_type;
             //need to skip over some unncessary types
 
             //operators are not working correctly
@@ -889,7 +889,8 @@ export default function Compile(sourcecode) {
 
                         //This one prints the global context values
                     case 'print':
-                        {
+                            {
+                                console.log("hrloo")
                 PrintEngine(mutable_tokens, memory, j); // eslint-disable-line
                         }
                         break;
@@ -1296,6 +1297,7 @@ export default function Compile(sourcecode) {
         //If a code is not working, it is probably because it's not cleaned properly.
 
         cleaned_sourcedata = GetCleanSourcedata(sourcedata, cleaned_sourcedata, mixedimpurity);
+        //console.log('cleaned_sourcedata:', cleaned_sourcedata)
 
         //#STEP 2- - Parsing cleaned_sourcedata, adding each item depending on it's type to tokens array
 
