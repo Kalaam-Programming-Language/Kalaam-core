@@ -1,4 +1,4 @@
-import Compile from "../Compiler/main";
+import { Compile } from "../Compiler/main";
 import { forloop2 } from "../testCodes/forloop2";
 import Data from "../testCodes/kalaamData";
 

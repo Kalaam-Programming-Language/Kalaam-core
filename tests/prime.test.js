@@ -1,4 +1,4 @@
-import Compile from "../Compiler/main";
+import { Compile } from "../Compiler/main";
 import { primenumber } from "../testCodes/primenumber";
 import Data from "../testCodes/kalaamData";
 

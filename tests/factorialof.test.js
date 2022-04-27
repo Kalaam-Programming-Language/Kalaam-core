@@ -1,4 +1,4 @@
-import Compile from "../Compiler/main";
+import { Compile } from "../Compiler/main";
 import { factorialOf } from "../testCodes/factorialOf";
 
 test("Checks factorial", () => {

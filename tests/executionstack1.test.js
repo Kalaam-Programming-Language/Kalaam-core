@@ -1,4 +1,4 @@
-import Compile from "../Compiler/main";
+import { Compile } from "../Compiler/main";
 import { executionstack1 } from "../testCodes/executionstack1";
 import Data from "../testCodes/kalaamData";
 

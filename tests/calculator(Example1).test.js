@@ -1,4 +1,4 @@
-import Compile from "../Compiler/main";
+import { Compile } from "../Compiler/main";
 import { calculator } from "../testCodes/calculatorEx1";
 import Data from "../testCodes/kalaamData";
 

@@ -1,4 +1,4 @@
-import Compile from "../Compiler/main";
+import { Compile } from "../Compiler/main";
 import { reverse } from "../testCodes/reverseEx3";
 import Data from "../testCodes/kalaamData";
 

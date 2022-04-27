@@ -1,4 +1,4 @@
-import Compile from "../Compiler/main";
+import { Compile } from "../Compiler/main";
 import { formname } from "../testCodes/formname";
 
 test("Testing For loop", () => {

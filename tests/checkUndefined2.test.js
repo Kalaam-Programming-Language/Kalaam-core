@@ -1,4 +1,4 @@
-import Compile from "../Compiler/main";
+import { Compile } from "../Compiler/main";
 import { undefined2 } from "../testCodes/checkundefined2";
 
 test("Checks Undefined error", () => {

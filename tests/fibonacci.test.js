@@ -1,4 +1,4 @@
-import Compile from "../Compiler/main";
+import { Compile } from "../Compiler/main";
 import { fibonacci } from "../testCodes/fibonacci";
 import Data from "../testCodes/kalaamData";
 

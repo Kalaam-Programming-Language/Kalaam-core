@@ -1,4 +1,4 @@
-import Compile from "../Compiler/main";
+import { Compile } from "../Compiler/main";
 import { whileloop } from "../testCodes/whileloop";
 import Data from "../testCodes/kalaamData";
 

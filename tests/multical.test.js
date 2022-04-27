@@ -1,4 +1,4 @@
-import Compile from "../Compiler/main";
+import { Compile } from "../Compiler/main";
 import { multical } from "../testCodes/multical";
 import Data from "../testCodes/kalaamData";
 

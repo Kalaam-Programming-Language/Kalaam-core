@@ -1,4 +1,4 @@
-import Compile from "../Compiler/main";
+import { Compile } from "../Compiler/main";
 import { bintodec } from "../testCodes/bintodec";
 
 test("Checks Undefined error", () => {

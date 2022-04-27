@@ -1,4 +1,4 @@
-import Compile from "../Compiler/main";
+import { Compile } from "../Compiler/main";
 import { function2 } from "../testCodes/function2";
 
 test("function testing", () => {
