@@ -1,7 +1,7 @@
 import { ActiveLangugaeKeywords } from '../Compiler/constants';
+console.log('ActiveLangugaeKeywords:', ActiveLangugaeKeywords);
 
 function SourceDataReplaceforEasyParsing(data) {
-  console.log('data:', data);
   let _AK = ActiveLangugaeKeywords;
   let keywords = [
     _AK.Print, //Still have to change this manually where REGEX are implemented
@@ -16,7 +16,6 @@ function SourceDataReplaceforEasyParsing(data) {
 
     data = data.replace(regex, ` ${kw} `);
   });
-  console.log('data:', data);
 
   // data = data.replace(/दिखाए/g, ' दिखाए ');
   // data = data.replace(/দেখাও/g, ' দেখাও ');
@@ -44,9 +43,10 @@ function SourceDataReplaceforEasyParsing(data) {
   // data = data.replace(/\==/g, ' == ');
 
   //preparing data for easy parsing by handling new lines, enters etc.
-  data = data.replace(/(;|\n|\r|' '| '| ")/gm, '').split(' ');
 
   console.log('data:', data);
+
+  data = data.replace(/(;|\n|\r|' '| '| ")/gm, '').split(' ');
 
   return data;
 }

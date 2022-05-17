@@ -421,6 +421,7 @@ function Compile(sourcecode) {
         case 'INPUT':
           try {
             PushInput(element, tokens, cleaned_sourcedata, i);
+            console.log('element:', element);
           } catch (e) {
             console.log(e, `Error in setting Input ${element}`);
           }

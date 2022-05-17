@@ -47,7 +47,7 @@ var KalaamKeywords = {
 };
 
 if (ActiveLanguage == 'Hindi') {
-  ActiveLangugaeKeywords = KalaamKeywords.Hindi;
+  ActiveLangugaeKeywords = KalaamKeywords.Bengali;
 }
 
 if (ActiveLanguage == 'Marathi') {

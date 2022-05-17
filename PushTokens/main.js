@@ -1,5 +1,6 @@
 import { RemoveBrackets, operatorType } from '../Scripts/Helpers';
 import { ActiveLangugaeKeywords } from '../Compiler/constants';
+console.log('ActiveLangugaeKeywords:', ActiveLangugaeKeywords);
 //ANCHOR - Functions to push token with type and value into tokens array for further parsing
 
 function PushVariable(v, tokens) {
@@ -76,7 +77,7 @@ function PushInput(value, tokens, cleaned_sourcedata, i) {
 
   value = RemoveBrackets(value);
 
-  value = value.replace('इनपुट', '');
+  value = value.replace(ActiveLangugaeKeywords.Input, '');
 
   tokens.push({
     type: 'AcceptInput',
