@@ -33,29 +33,14 @@ var KalaamKeywords = {
     Function: 'रचना',
     Langugae: 'Marathi',
   },
-  Bengali: {
-    Print: 'দেখাও', //Still have to change this manually where REGEX are implemented
-    Input: 'নিবেশ',
-    If: 'যদি',
-    For: 'জন্য',
-    While: 'যখন',
-    Length: 'দৈর্ঘ্য',
-    Push: 'যুক্ত',
-    Function: 'পর্ব',
-    Langugae: 'Bengali',
-  },
 };
 
 if (ActiveLanguage == 'Hindi') {
-  ActiveLangugaeKeywords = KalaamKeywords.Bengali;
+  ActiveLangugaeKeywords = KalaamKeywords.Hindi;
 }
 
 if (ActiveLanguage == 'Marathi') {
   ActiveLangugaeKeywords = KalaamKeywords.Marathi;
-}
-
-if (ActiveLanguage == 'Bengali') {
-  ActiveLangugaeKeywords = KalaamKeywords.Bengali;
 }
 
 //
