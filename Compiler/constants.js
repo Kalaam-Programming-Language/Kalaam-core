@@ -8,7 +8,6 @@ if (ActiveLanguage == null) {
 //
 
 var ActiveLangugaeKeywords = "";
-
 var KalaamKeywords = {
   Hindi: {
     Print: "दिखाए", //Still have to change this manually where REGEX are implemented
