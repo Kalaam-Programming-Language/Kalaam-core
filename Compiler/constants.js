@@ -52,6 +52,7 @@ if (ActiveLanguage == "Hindi") {
 if (ActiveLanguage == "Marathi") {
   ActiveLangugaeKeywords = KalaamKeywords.Marathi;
 }
+/* Bengali Added */
 
 if (ActiveLanguage == "Bengali") {
   ActiveLangugaeKeywords = KalaamKeywords.Bengali;
