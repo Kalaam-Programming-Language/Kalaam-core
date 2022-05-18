@@ -54,6 +54,9 @@ if (ActiveLanguage == "Marathi") {
   ActiveLangugaeKeywords = KalaamKeywords.Marathi;
 }
 
+if (ActiveLanguage == "Bengali") {
+  ActiveLangugaeKeywords = KalaamKeywords.Bengali;
+}
 //
 
 export { ActiveLangugaeKeywords, KalaamKeywords };
