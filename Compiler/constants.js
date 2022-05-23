@@ -37,11 +37,11 @@ var KalaamKeywords = {
     Print: "দেখাও", //Still have to change this manually where REGEX are implemented
     Input: "নিবেশ",
     If: "যদি",
-    For: "জন্য",
+    For: "সন্ধানে",
     While: "যখন",
     Length: "দৈর্ঘ্য",
     Push: "যোগ",
-    Function: "ফাংশন",
+    Function: "পর্ব",
     Langugae: "Bengali",
   },
 };
