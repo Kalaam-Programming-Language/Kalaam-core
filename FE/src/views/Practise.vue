@@ -490,7 +490,7 @@ export default {
           output,
           error,
           ExecutionStack,
-        } = Compile(this.code, this.ActiveLanguage);
+        } = Compile(this.code, this.Keyword);
 
         this.linebylineOutput = linebylineOutput;
         this.TimeTaken = TimeTaken;
@@ -509,7 +509,7 @@ export default {
       //try  to see what we are sending to our compiler
 
       if (this.flag == false) {
-        let { ExecutionStack } = Compile(this.code, this.ActiveLanguage);
+        let { ExecutionStack } = Compile(this.code, this.Keyword);
         this.ExecutionStack = ExecutionStack;
       }
 

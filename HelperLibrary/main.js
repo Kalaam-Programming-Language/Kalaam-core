@@ -4,3 +4,4 @@ Array.prototype.nextElement = function(i) {
 Array.prototype.prevElement = function(i) {
     return this[i - 1];
 };
+ 

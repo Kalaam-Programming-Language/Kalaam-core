@@ -1,5 +1,4 @@
 import { ActiveLangugaeKeywords } from '../Compiler/constants';
-console.log('ActiveLangugaeKeywords:', ActiveLangugaeKeywords);
 
 function SourceDataReplaceforEasyParsing(data) {
   let _AK = ActiveLangugaeKeywords;
@@ -43,8 +42,6 @@ function SourceDataReplaceforEasyParsing(data) {
   // data = data.replace(/\==/g, ' == ');
 
   //preparing data for easy parsing by handling new lines, enters etc.
-
-  console.log('data:', data);
 
   data = data.replace(/(;|\n|\r|' '| '| ")/gm, '').split(' ');
 

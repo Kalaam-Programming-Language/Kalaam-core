@@ -9,7 +9,7 @@
 //To check variable types: Number, String, Array etc.
 import * as TypeCheck from '../TypeCheck/TypeChecking';
 
-import { ActiveLangugaeKeywords, KalaamKeywords } from '../Compiler/constants';
+import { KalaamKeywords } from '../Compiler/constants';
 
 //To check other operations like MultiString, Arithmetic Operation etc.
 import * as AdvancedTypeCheck from '../TypeCheck/AdvancedTypeChecking';
@@ -55,7 +55,7 @@ import { findtokenPositioninCode } from '../Scripts/finders';
 import { isInterpretableType } from '../Scripts/testers';
 //We will be importing this whole function to practise.vue and it will be executed when user clicks on 'RUN'
 
-function Compile(sourcecode) {
+function Compile(sourcecode, ActiveLangugaeKeywords) {
   try {
     //t0 along with t1 takes record of Time taken to run the code. t1-t0 gives us the exact time taken.
     var t0 = performance.now(); // eslint-disable-line
@@ -1128,9 +1128,6 @@ function Compile(sourcecode) {
 
     //If a code is not working, it is probably because it's not cleaned properly.
     // console.log('cleaned_sourcedata:', cleaned_sourcedata);
-    console.log('cleaned_sourcedata:', cleaned_sourcedata);
-
-    console.log('tokens:', tokens);
 
     cleaned_sourcedata = GetCleanSourcedata(sourcedata, cleaned_sourcedata, mixedimpurity);
 

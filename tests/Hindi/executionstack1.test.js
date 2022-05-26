@@ -1,22 +1,20 @@
-import { Compile } from "../Compiler/main";
-import { executionstack1 } from "../testCodes/executionstack1";
-import Data from "../testCodes/kalaamData";
+import { Compile } from '../../Compiler/main';
+import { KalaamKeywords } from '../../Compiler/main';
+import { executionstack1 } from '../../testCodes/executionstack1';
+import Data from '../../testCodes/kalaamData';
 
-test("checks execution stack", () => {
+test('checks execution stack', () => {
   const expected = [
     ' Computer ने, "x" को, "11" ये VALUE दे कर अपने Memory में दर्ज(Store) करवाया है |',
     ' Computer ने, "y" को, "11" ये VALUE दे कर अपने Memory में दर्ज(Store) करवाया है |',
     ' Computer ने, "ऑपरेशन" को, "+" ये VALUE दे कर अपने Memory में दर्ज(Store) करवाया है |',
     "कंडीशन ऑपरेशन=='+'  , TRUE(सत्य) होने के कारन COMPUTER आगे के कोड को रन करेगा ",
-    ' Computer सबसे पहले जाँच करता है की क्या, "x+y" को सुलझाने(Solve) करने की ज़रुरत है?\n' +
-      ' अगर हा, तो Computer "x+y" को Solve करके, "नतीजा" के नाम से Memory में दर्ज(Store)कर देगा | \n' +
-      ' यहापर , "x+y" की कीमत (Value) , "22" आती है |\n' +
-      ' इसलिए, Computer "नतीजा" को "22" ये VALUE दे कर अपने Memory में दर्ज(Store) कर देता है |',
+    ' Computer सबसे पहले जाँच करता है की क्या, "x+y" को सुलझाने(Solve) करने की ज़रुरत है?\n' + ' अगर हा, तो Computer "x+y" को Solve करके, "नतीजा" के नाम से Memory में दर्ज(Store)कर देगा | \n' + ' यहापर , "x+y" की कीमत (Value) , "22" आती है |\n' + ' इसलिए, Computer "नतीजा" को "22" ये VALUE दे कर अपने Memory में दर्ज(Store) कर देता है |',
     "कंडीशन  ऑपरेशन=='-'  , FALSE(गलत) होने के कारन COMPUTER आगे के कोड को रन नहीं करेगा ",
     "कंडीशन  ऑपरेशन=='*'  , FALSE(गलत) होने के कारन COMPUTER आगे के कोड को रन नहीं करेगा ",
     "कंडीशन  ऑपरेशन=='/'  , FALSE(गलत) होने के कारन COMPUTER आगे के कोड को रन नहीं करेगा ",
   ];
-  var { ExecutionStack } = Compile(executionstack1);
+  var { ExecutionStack } = Compile(executionstack1, KalaamKeywords.Hindi);
   let stack = [];
 
   ExecutionStack.forEach((el) => {

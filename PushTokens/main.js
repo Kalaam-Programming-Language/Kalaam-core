@@ -1,6 +1,5 @@
 import { RemoveBrackets, operatorType } from '../Scripts/Helpers';
 import { ActiveLangugaeKeywords } from '../Compiler/constants';
-console.log('ActiveLangugaeKeywords:', ActiveLangugaeKeywords);
 //ANCHOR - Functions to push token with type and value into tokens array for further parsing
 
 function PushVariable(v, tokens) {
