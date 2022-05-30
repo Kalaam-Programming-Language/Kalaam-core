@@ -1,15 +1,14 @@
 import { ActiveLangugaeKeywords, } from '../Compiler/constants';
 
-const Keywords = [
-    ActiveLangugaeKeywords.If,
-    'दुहराओ',
-    ActiveLangugaeKeywords.While,
-    ActiveLangugaeKeywords.Print,
-    'इनपुट',
-    'रचना',
-    'को',
-    'मे',
-];
+let _AK = ActiveLangugaeKeywords
+const Keywords = [_AK.Print, //Still have to change this manually where REGEX are implemented
+_AK.Input,
+_AK.If,
+_AK.For,
+_AK.While,
+_AK.Length,
+_AK.Push,
+_AK.Function,]
 
 // var PrintKeywordRegex = "^" + "(" + ActiveLangugaeKeywords.Print + ")*$"
 // PrintKeywordRegex = new RegExp(PrintKeywordRegex)
@@ -56,37 +55,37 @@ export function isOperator() {
 
 export function isInput() {
     return function (element) {
-        return element.includes('इनपुट');
+        return element.includes(_AK.Input);
     };
 }
 
 export function isPrintOperation() {
     return function (element) {
-        return element.includes(ActiveLangugaeKeywords.Print);
+        return element.includes(_AK.Print);
     };
 }
 
 export function isConditionalKeyword() {
     return function (element) {
-        return element == ActiveLangugaeKeywords.If || element == ActiveLangugaeKeywords.While || element == 'अन्यथा';
+        return element == _AK.If || element == _AK.While || element == 'अन्यथा';
     };
 }
 
 export function isForLoop() {
     return function (element) {
-        return element == 'दुहराओ';
+        return element == _AK.For;
     };
 }
 
 export function isWhileLoop() {
     return function (element) {
-        return element == ActiveLangugaeKeywords.While;
+        return element == _AK.While;
     };
 }
 
 export function isFunction() {
     return function (element) {
-        return element == 'रचना';
+        return element == _AK.Function;
     };
 }
 
@@ -125,17 +124,17 @@ export function isinvalidString() {
     return function (element) {
         return (
             element == '"'
-      || element == '\''
-      || element == '*'
-      || element == '$'
-      || element == '/'
-      || element == '@'
-      || element == '|'
-      || element == '/'
-      || element == '?'
-      || element == '#'
-      || (element.charAt(0) == '\'' && element.charAt(element.length - 1) == '\'')
-      || (element.charAt(0) == '"' && element.charAt(element.length - 1) == '"')
+            || element == '\''
+            || element == '*'
+            || element == '$'
+            || element == '/'
+            || element == '@'
+            || element == '|'
+            || element == '/'
+            || element == '?'
+            || element == '#'
+            || (element.charAt(0) == '\'' && element.charAt(element.length - 1) == '\'')
+            || (element.charAt(0) == '"' && element.charAt(element.length - 1) == '"')
         );
     };
 }
