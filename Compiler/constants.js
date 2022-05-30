@@ -33,6 +33,19 @@ var KalaamKeywords = {
         Function: 'रचना',
         Langugae: 'Marathi',
     },
+
+    Odia: {
+        Print: 'ଦେଖାଅ',
+        Input: 'ଇନପୁଟ',
+        If: 'ଯଦି',
+        For: 'ଦୋହରାଅ',
+        while: 'ଯେପର୍ଯ୍ୟନ୍ତ',
+        Length: 'ଦୈର୍ଘ୍ୟ',
+        Push: 'ଯୋଡ଼',
+        pop: 'ହଟାଅ',
+        function: 'କାର୍ଯ୍ୟଭାଗ',
+        Langugae: 'Odia',
+    },
 };
 
 if (ActiveLanguage == 'Hindi') {
@@ -43,6 +56,9 @@ if (ActiveLanguage == 'Marathi') {
     ActiveLangugaeKeywords = KalaamKeywords.Marathi;
 }
 
+if (ActiveLanguage == 'Odia') {
+    ActiveLangugaeKeywords = KalaamKeywords.Odia;
+}
 //console.log('ActiveLangugaeKeywords: ', ActiveLangugaeKeywords);
 
 export { ActiveLangugaeKeywords, KalaamKeywords, };
