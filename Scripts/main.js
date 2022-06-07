@@ -1,6 +1,6 @@
 import { SourceDataReplaceforEasyParsing } from '../Scripts/DataCleaning';
 
-import { ActiveLangugaeKeywords } from '../Compiler/constants';
+import { ActiveLangugaeKeywords,KalaamKeywords } from '../Compiler/constants';
 
 import { RemoveQuotes, RemoveBrackets, Count } from '../Scripts/Helpers';
 
@@ -278,11 +278,11 @@ function AddElementToArray(Sourcedata, index, updated_tokens, ExecutionStack, Li
 }
 
 function AcceptInputandSetValue(tokens, index, updated_tokens, ExecutionStack, LinebylineSourcedata) {
-  console.log('index:', index);
-  console.log('tokens:', tokens);
+  // console.log('index:', index);
+  // console.log('tokens:', tokens);
   let SetInputValueAs = tokens[index].AcceptAs;
-
-  var value = prompt('आप ' + '"' + SetInputValueAs + '"' + ' को क्या किंमत देना चाहते हो ?'); // eslint-disable-line
+// console.log("DFGdGDGDFGDF",KalaamKeywords,ActiveLangugaeKeywords.Langugae)
+  var value = prompt('"' + SetInputValueAs + '"' + ActiveLangugaeKeywords.inputText); // eslint-disable-line
 
   updated_tokens.push({
     name: SetInputValueAs,
