@@ -33,7 +33,7 @@ var KalaamKeywords = {
     Push: 'पुश',
     Function: 'रचना',
     Langugae: 'Marathi',
-    inputText: 'marathi?',
+    inputText: 'ला कोणती किंमत द्यायची आहे??',
   },
   Bengali: {
     Print: 'দেখাও', //Still have to change this manually where REGEX are implemented

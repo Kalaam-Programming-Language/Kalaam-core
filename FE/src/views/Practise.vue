@@ -212,7 +212,7 @@
           }}</q-btn>
           <q-btn flat id="subm" @click="Add(Keyword.Length + '()')">{{Keyword.Length}}</q-btn>
           <q-btn flat id="subm" @click="Add(Keyword.Push + '()')">{{Keyword.Push}}</q-btn>
-          <q-btn flat id="subm" @click="Add(Keyword.Function + '()')">{{Keyword.Function}}</q-btn>
+          <q-btn flat id="subm" @click="Add(Keyword.Function )">{{Keyword.Function}}</q-btn>
         </div>
       </div>
 

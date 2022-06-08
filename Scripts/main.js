@@ -282,7 +282,7 @@ function AcceptInputandSetValue(tokens, index, updated_tokens, ExecutionStack, L
   // console.log('tokens:', tokens);
   let SetInputValueAs = tokens[index].AcceptAs;
 // console.log("DFGdGDGDFGDF",KalaamKeywords,ActiveLangugaeKeywords.Langugae)
-  var value = prompt('"' + SetInputValueAs + '"' + ActiveLangugaeKeywords.inputText); // eslint-disable-line
+  var value = prompt('"' + SetInputValueAs + '" ' + ActiveLangugaeKeywords.inputText); // eslint-disable-line
 
   updated_tokens.push({
     name: SetInputValueAs,
