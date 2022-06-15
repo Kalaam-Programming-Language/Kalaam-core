@@ -45,7 +45,7 @@ var KalaamKeywords = {
     Push: 'যোগ',
     Function: 'পর্ব',
     Langugae: 'Bengali',
-    inputText: 'bengali',
+    inputText: 'আপনি কি মান দিতে চান?',
   },
 };
 
