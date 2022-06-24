@@ -200,19 +200,19 @@
           <q-btn flat id="subm" @click="Add(Keyword.Print + '()')">{{
             Keyword.Print
           }}</q-btn>
-          <q-btn flat id="subm" @click="Add('इनपुट()')">इनपुट</q-btn>
+          <q-btn flat id="subm" @click="Add(Keyword.Input + '()')">{{Keyword.Input}}</q-btn>
 
           <q-btn flat id="subm" @click="Add(Keyword.If + '()')">{{
             Keyword.If
           }}</q-btn>
 
-          <q-btn flat id="subm" @click="Add('दुहराओ x को y मे')">दुहराओ</q-btn>
+          <q-btn flat id="subm" @click="Add(Keyword.For)">{{Keyword.For}}</q-btn>
           <q-btn flat id="subm" @click="Add(Keyword.While + '()')">{{
             Keyword.While
           }}</q-btn>
-          <q-btn flat id="subm" @click="Add('.संख्या()')">.संख्या</q-btn>
-          <q-btn flat id="subm" @click="Add('.पुश()')">.पुश</q-btn>
-          <q-btn flat id="subm" @click="Add('रचना')">रचना</q-btn>
+          <q-btn flat id="subm" @click="Add(Keyword.Length + '()')">{{Keyword.Length}}</q-btn>
+          <q-btn flat id="subm" @click="Add(Keyword.Push + '()')">{{Keyword.Push}}</q-btn>
+          <q-btn flat id="subm" @click="Add(Keyword.Function )">{{Keyword.Function}}</q-btn>
         </div>
       </div>
 
@@ -355,7 +355,7 @@ export default {
 
       model: null,
 
-      options: ["Hindi", "Marathi"],
+      options: ["Hindi", "Marathi","Bengali"],
     };
   },
 
@@ -377,6 +377,9 @@ export default {
         localStorage.setItem("ActiveLangugae", this.ActiveLanguage);
 
         this.Keyword = KalaamKeywords.Marathi;
+      }else if(this.ActiveLanguage == "Bengali"){
+         localStorage.setItem("ActiveLangugae", this.ActiveLanguage);
+         this.Keyword = KalaamKeywords.Bengali;
       }
     },
   },

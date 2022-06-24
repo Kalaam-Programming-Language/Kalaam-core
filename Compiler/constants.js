@@ -20,6 +20,7 @@ var KalaamKeywords = {
     Push: 'पुश',
     Function: 'रचना',
     Langugae: 'Hindi',
+    inputText: 'को क्या किंमत देना चाहते हो ?',
   },
 
   Marathi: {
@@ -32,6 +33,7 @@ var KalaamKeywords = {
     Push: 'पुश',
     Function: 'रचना',
     Langugae: 'Marathi',
+    inputText: 'ला कोणती किंमत द्यायची आहे??',
   },
   Bengali: {
     Print: 'দেখাও', //Still have to change this manually where REGEX are implemented
@@ -43,6 +45,7 @@ var KalaamKeywords = {
     Push: 'যোগ',
     Function: 'পর্ব',
     Langugae: 'Bengali',
+    inputText: 'আপনি কি মান দিতে চান?',
   },
 };
 
