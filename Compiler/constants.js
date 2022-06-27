@@ -41,7 +41,7 @@ var KalaamKeywords = {
     If: 'যদি',
     For: 'সন্ধানে',
     While: 'যখন',
-    Length: 'দৈর্ঘ্য',
+    Length: 'দৈর্ঘ্য' ||'length',
     Push: 'যোগ',
     Function: 'পর্ব',
     Langugae: 'Bengali',

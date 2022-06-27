@@ -1,6 +1,6 @@
 import { Compile } from '../../Compiler/main';
 import { KalaamKeywords } from '../../Compiler/main';
-import { Banglafunction1 } from '../../testCodes/Bangla.function';
+import { Banglafunction1 } from '../../testCodes/Bengali/Bangla.function';
 
 test('function testing', () => {
   const expected = ['আমরা এখন বাংলায় কোড করতে পারি'];
