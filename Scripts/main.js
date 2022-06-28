@@ -1,6 +1,6 @@
 import { SourceDataReplaceforEasyParsing } from '../Scripts/DataCleaning';
 
-import { ActiveLangugaeKeywords,KalaamKeywords } from '../Compiler/constants';
+import { ActiveLangugaeKeywords, ActiveLanguage } from '../Compiler/constants';
 
 import { RemoveQuotes, RemoveBrackets, Count } from '../Scripts/Helpers';
 
@@ -281,7 +281,7 @@ function AcceptInputandSetValue(tokens, index, updated_tokens, ExecutionStack, L
   // console.log('index:', index);
   // console.log('tokens:', tokens);
   let SetInputValueAs = tokens[index].AcceptAs;
-// console.log("DFGdGDGDFGDF",KalaamKeywords,ActiveLangugaeKeywords.Langugae)
+  // console.log("DFGdGDGDFGDF",KalaamKeywords,ActiveLangugaeKeywords.Langugae)
   var value = prompt('"' + SetInputValueAs + '" ' + ActiveLangugaeKeywords.inputText); // eslint-disable-line
 
   updated_tokens.push({
@@ -794,7 +794,7 @@ function AssignorUpdateValues(sourcedata, i, updated_tokens, iterator, OriginalI
   }
 
   //to count the length, Numbers.संख्या()s
-  else if (varvalue.includes('संख्या')) {
+  else if (varvalue.includes(ActiveLangugaeKeywords.Length)) {
     let Split = varvalue.split('.');
 
     let item = Split[0];
@@ -1005,7 +1005,7 @@ function AssignorUpdateValues(sourcedata, i, updated_tokens, iterator, OriginalI
 
   let message = '';
 
-  if (isCalculation(sourcedata[i + 1].value) || sourcedata[i + 1].value.includes('संख्या')) {
+  if (isCalculation(sourcedata[i + 1].value) || sourcedata[i + 1].value.includes(ActiveLangugaeKeywords.Length)) {
     message =
       ' Computer सबसे पहले जाँच करता है की क्या, ' +
       '"' +

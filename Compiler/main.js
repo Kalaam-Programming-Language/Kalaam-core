@@ -1129,6 +1129,10 @@ function Compile(sourcecode, ActiveLangugaeKeywords) {
     //If a code is not working, it is probably because it's not cleaned properly.
     // console.log('cleaned_sourcedata:', cleaned_sourcedata);
 
+    console.log('cleaned', cleaned_sourcedata);
+    console.log('tokens:', tokens);
+    console.log('memory:', memory);
+
     cleaned_sourcedata = GetCleanSourcedata(sourcedata, cleaned_sourcedata, mixedimpurity);
 
     //#STEP 2- - Parsing cleaned_sourcedata, adding each item depending on it's type to tokens array

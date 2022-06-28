@@ -2,7 +2,7 @@ let ActiveLanguage = localStorage.getItem('ActiveLangugae');
 //
 
 if (ActiveLanguage == null) {
-  ActiveLanguage = 'Hindi';
+  ActiveLanguage = 'Bengali';
 }
 
 //
@@ -41,7 +41,7 @@ var KalaamKeywords = {
     If: 'যদি',
     For: 'সন্ধানে',
     While: 'যখন',
-    Length: 'দৈর্ঘ্য' ||'length',
+    Length: 'দৈর্ঘ্য' || 'length',
     Push: 'যোগ',
     Function: 'পর্ব',
     Langugae: 'Bengali',
@@ -62,4 +62,4 @@ if (ActiveLanguage == 'Bengali') {
 }
 //
 
-export { ActiveLangugaeKeywords, KalaamKeywords };
+export { ActiveLangugaeKeywords, KalaamKeywords, ActiveLanguage };
