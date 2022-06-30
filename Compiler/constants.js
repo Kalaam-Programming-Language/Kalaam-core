@@ -2,7 +2,7 @@ let ActiveLanguage = localStorage.getItem('ActiveLangugae');
 //
 
 if (ActiveLanguage == null) {
-  ActiveLanguage = 'Bengali';
+  ActiveLanguage = 'Hindi';
 }
 
 //
