@@ -36,11 +36,14 @@ function isArrayOperation(element) {
   }
 }
 
+//need to include unicode range for new language
+
 export function isVariable() {
   return function (element) {
     const HindiRegex = /(?:^|\s)[\u0900-\u097F]+?(?:\s|$)/g;
+    const BengaliRegex = /(?:^|\s)[\u0980-\u09FB]+?(?:\s|$)/g;
 
-    return /^[a-z]+$/i.test(element) || (HindiRegex.test(element) && !Keywords.includes(element));
+    return /^[a-z]+$/i.test(element) || (BengaliRegex.test(element) && !Keywords.includes(element)) || (HindiRegex.test(element) && !Keywords.includes(element));
   };
 }
 export function isNumber() {

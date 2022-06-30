@@ -182,6 +182,7 @@ function Compile(sourcecode, ActiveLangugaeKeywords) {
       //This loop is only for printing direct values like print(name), print(array)
 
       memory.forEach((el) => {
+        console.log('el:', el);
         //If we have a variable-value pair sitting in memory
 
         if (el.name === VariableToPrint) {
@@ -373,6 +374,7 @@ function Compile(sourcecode, ActiveLangugaeKeywords) {
       let prevEl = cleaned_sourcedata.prevElement(i);
 
       let token_type = scanner(cleaned_sourcedata, i, tokens);
+      console.log('token_type:', token_type);
       //Push variables to tokens
       //Format: {type: "variable", value: "ReverseString"}
 
@@ -388,6 +390,7 @@ function Compile(sourcecode, ActiveLangugaeKeywords) {
           //3: {type: "value", value: "Hello"}
 
           let handled_variable = handleVariable(element, tokens, cleaned_sourcedata, i, nextEl, prevEl);
+          console.log('handled_variable:', handled_variable);
           let h = handled_variable;
           if (h != undefined) {
             try {
