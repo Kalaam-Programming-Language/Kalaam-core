@@ -1,6 +1,6 @@
 {
   "name": "kalaam",
-  "version": "2.0",
+  "version": "2.1.0",
   "description": "Interpretor for Kalaam, the programming language in Hindi",
   "main": "Compiler/main",
   "scripts": {
