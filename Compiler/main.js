@@ -7,42 +7,21 @@
 //SECTION - Importing function modules
 
 //To check variable types: Number, String, Array etc.
-import * as TypeCheck from "../TypeCheck/TypeChecking";
+import * as TypeCheck from '../TypeCheck/TypeChecking';
 
-import { ActiveLangugaeKeywords, KalaamKeywords } from "../Compiler/constants";
+import { KalaamKeywords } from '../Compiler/constants';
 
 //To check other operations like MultiString, Arithmetic Operation etc.
-import * as AdvancedTypeCheck from "../TypeCheck/AdvancedTypeChecking";
+import * as AdvancedTypeCheck from '../TypeCheck/AdvancedTypeChecking';
 
 //To format user input into a proper String, Array or Condition.
-import * as BuildOperation from "../Scripts/BuildOperations";
+import * as BuildOperation from '../Scripts/BuildOperations';
 
-import { RemoveQuotes, RemoveBrackets, earlyCleaning } from "../Scripts/Helpers";
+import { RemoveQuotes, RemoveBrackets, earlyCleaning } from '../Scripts/Helpers';
 
 //Functions imported to push a particular data to our Tokens array.
 //Tokens array is basically a clean, formatted and a word by word version of raw code provided by user
-import {
-  PushArray,
-  PushCalculation,
-  PushConditionalKeyword,
-  PushCondition,
-  PushForLoop,
-  PushWhileLoop,
-  PushForLoopAruguments,
-  PushExpression,
-  PushNativeOperation,
-  PushKeyword,
-  PushNumber,
-  PushOperator,
-  PushRealTimePrintOperation,
-  PushString,
-  PushVariable,
-  PushVariableValue,
-  PushFunctionData,
-  PushFunctionExecution,
-  PushToArray,
-  PushInput,
-} from "../PushTokens/main";
+import { PushArray, PushCalculation, PushConditionalKeyword, PushCondition, PushForLoop, PushWhileLoop, PushForLoopAruguments, PushExpression, PushNativeOperation, PushKeyword, PushNumber, PushOperator, PushRealTimePrintOperation, PushString, PushVariable, PushVariableValue, PushFunctionData, PushFunctionExecution, PushToArray, PushInput } from '../PushTokens/main';
 
 //This are other helper functions that we need for a particular task. All of this functions will be explained indepth as we see them in codebase.
 import {
@@ -66,17 +45,17 @@ import {
   ForLoopSetMetadata,
   SetArrayIndexValue,
   AddtoExecutionStack,
-} from "../Scripts/main.js";
+} from '../Scripts/main.js';
 
-import scanner from "../scanner/main";
+import scanner from '../scanner/main';
 
-import "../HelperLibrary/main";
-import { handleRealtimePrint, handleVariable, handleOutput, prepareFunction } from "../Scripts/Handlers";
-import { findtokenPositioninCode } from "../Scripts/finders";
-import { isInterpretableType } from "../Scripts/testers";
+import '../HelperLibrary/main';
+import { handleRealtimePrint, handleVariable, handleOutput, prepareFunction } from '../Scripts/Handlers';
+import { findtokenPositioninCode } from '../Scripts/finders';
+import { isInterpretableType } from '../Scripts/testers';
 //We will be importing this whole function to practise.vue and it will be executed when user clicks on 'RUN'
 
-function Compile(sourcecode) {
+function Compile(sourcecode, ActiveLangugaeKeywords) {
   try {
     //t0 along with t1 takes record of Time taken to run the code. t1-t0 gives us the exact time taken.
     var t0 = performance.now(); // eslint-disable-line
@@ -84,7 +63,7 @@ function Compile(sourcecode) {
     //Sourcedata is the raw code provided by user
     const sourcedata = sourcecode;
 
-    var LinebylineSourcedata = sourcedata.replace(/(?:\r\n|\r|\n)/g, "breakpoint").split("breakpoint");
+    var LinebylineSourcedata = sourcedata.replace(/(?:\r\n|\r|\n)/g, 'breakpoint').split('breakpoint');
 
     //This is where formatted and cleaned sourcedata will go.
     var cleaned_sourcedata = [];
@@ -125,11 +104,11 @@ function Compile(sourcecode) {
 
     sourcecode = earlyCleaning(sourcecode);
 
-    kalaam.output = "";
+    kalaam.output = '';
     kalaam.LastConditionValue = [];
     kalaam.ExecutionStack = [];
 
-    kalaam.linebylineOutput = kalaam.output.split("\n");
+    kalaam.linebylineOutput = kalaam.output.split('\n');
     kalaam.error = [];
     kalaam.OperationObjects = [];
 
@@ -203,6 +182,7 @@ function Compile(sourcecode) {
       //This loop is only for printing direct values like print(name), print(array)
 
       memory.forEach((el) => {
+        console.log('el:', el);
         //If we have a variable-value pair sitting in memory
 
         if (el.name === VariableToPrint) {
@@ -235,10 +215,10 @@ function Compile(sourcecode) {
 
             //We will simplify this conditions as we move forward
             else if (!isPureEval(el.value) && !isNumber(el.value)) {
-              if (!(el.name.includes("]") && el.name.includes("["))) {
-                if (el.type === "Array") {
-                  if (!el.value.includes("[")) {
-                    el.value = "[" + el.value.toString() + "]";
+              if (!(el.name.includes(']') && el.name.includes('['))) {
+                if (el.type === 'Array') {
+                  if (!el.value.includes('[')) {
+                    el.value = '[' + el.value.toString() + ']';
                   }
                 }
 
@@ -252,7 +232,7 @@ function Compile(sourcecode) {
       });
 
       //This is how we print Array in Kalaam
-      if (Tokens[j + 1].type === "Array") {
+      if (Tokens[j + 1].type === 'Array') {
         //To run only if iterator is present
 
         //This runs on for loop - दिखाए(Array[a]) etc
@@ -281,16 +261,16 @@ function Compile(sourcecode) {
 
           let ArrayElement = CreateArrayElement(Value, IndexToChange);
 
-          let element = ArrayElement.replace("]", "");
+          let element = ArrayElement.replace(']', '');
 
-          let Split = element.split("[");
+          let Split = element.split('[');
 
-          if (Split[1].includes("-") || Split[1].includes("+")) {
+          if (Split[1].includes('-') || Split[1].includes('+')) {
             let output = CalculateValues(Split[1], j, memory);
 
             Split[1] = output;
 
-            Split = Split.join("[") + "]";
+            Split = Split.join('[') + ']';
             ArrayElement = Split;
           }
 
@@ -299,7 +279,7 @@ function Compile(sourcecode) {
           if (token != undefined && OriginalIterator != Split[1]) {
             Split[1] = token.value;
 
-            Split = Split.join("[") + "]";
+            Split = Split.join('[') + ']';
             ArrayElement = Split;
           } else {
             ArrayElement = ArrayElement;
@@ -313,13 +293,10 @@ function Compile(sourcecode) {
       }
 
       //printing direct numbers and direct calcultions like print(10), print(10*10)
-      else if (
-        token === ActiveLangugaeKeywords.Print &&
-        (isPureEval(RemoveBrackets(NextTokenValue)) || isNumber(RemoveBrackets(NextTokenValue)))
-      ) {
+      else if (token === ActiveLangugaeKeywords.Print && (isPureEval(RemoveBrackets(NextTokenValue)) || isNumber(RemoveBrackets(NextTokenValue)))) {
         NextTokenValue = RemoveBrackets(NextTokenValue);
 
-        if (isNumber(NextTokenValue) && Tokens[j + 1].type != "Calculation") {
+        if (isNumber(NextTokenValue) && Tokens[j + 1].type != 'Calculation') {
           handleOutput(NextTokenValue, kalaam);
         } else {
           let a = eval(NextTokenValue);
@@ -329,60 +306,48 @@ function Compile(sourcecode) {
       }
 
       //foroperations like print('you live, you learn')
-      else if (
-        Tokens[j + 1].mode === "RealTimePrint" &&
-        !NextTokenValue.includes("+") /*&& !NextTokenValue.includes('=')*/
-      ) {
+      else if (Tokens[j + 1].mode === 'RealTimePrint' && !NextTokenValue.includes('+') /*&& !NextTokenValue.includes('=')*/) {
         let output = RemoveBrackets(NextTokenValue);
 
         output = RemoveQuotes(output);
 
-        handleOutput(output + "\n", kalaam);
+        handleOutput(output + '\n', kalaam);
       }
 
       //operations like print(Age + 'is young age') i.e string concatenations
-      else if (Tokens[j + 1].mode === "RealTimePrint" && NextTokenValue.includes("+")) {
+      else if (Tokens[j + 1].mode === 'RealTimePrint' && NextTokenValue.includes('+')) {
         let x = SplitElementsArray(NextTokenValue);
 
-        x = x.join("").split("+");
+        x = x.join('').split('+');
 
         StringVar = SetValues(x, memory);
 
-        let output = StringVar.join(" ");
+        let output = StringVar.join(' ');
 
         output = RemoveBrackets(output);
         output = RemoveQuotes(output);
 
-        handleOutput(output + "\n", kalaam);
-      } else if (isCalculation(RemoveBrackets(NextTokenValue)) && Tokens[j + 1].mode != "RealTimePrint") {
+        handleOutput(output + '\n', kalaam);
+      } else if (isCalculation(RemoveBrackets(NextTokenValue)) && Tokens[j + 1].mode != 'RealTimePrint') {
         NextTokenValue = RemoveBrackets(NextTokenValue);
 
         let output = CalculateValues(NextTokenValue, j, memory);
 
-        handleOutput(output + "\n", kalaam);
+        handleOutput(output + '\n', kalaam);
       }
 
-      let message =
-        " Computer ने आपकी दी गयी वैल्यू, " + '"' + RemoveBrackets(NextTokenValue) + '"' + " को दिखाया है |";
+      let message = ' Computer ने आपकी दी गयी वैल्यू, ' + '"' + RemoveBrackets(NextTokenValue) + '"' + ' को दिखाया है |';
 
       //This is the experession whcih is getting evaluated.
 
       let expression = token + NextTokenValue;
-      let description = "किसी VALUE को OUTPUT SCREEN पे दिखाने के लिए दिखाए() का उपयोग होता है।";
+      let description = 'किसी VALUE को OUTPUT SCREEN पे दिखाने के लिए दिखाए() का उपयोग होता है।';
 
       expression = GetcleanedExpression(expression);
 
       let position = findtokenPositioninCode(LinebylineSourcedata, expression, true);
       if (position != undefined) {
-        AddtoExecutionStack(
-          ExecutionStack,
-          ActiveLangugaeKeywords.Print,
-          description,
-          VariableToPrint,
-          null,
-          message,
-          position
-        );
+        AddtoExecutionStack(ExecutionStack, ActiveLangugaeKeywords.Print, description, VariableToPrint, null, message, position);
       }
     }
 
@@ -409,13 +374,13 @@ function Compile(sourcecode) {
       let prevEl = cleaned_sourcedata.prevElement(i);
 
       let token_type = scanner(cleaned_sourcedata, i, tokens);
-      console.log("token_type:", token_type);
+      console.log('token_type:', token_type);
       //Push variables to tokens
       //Format: {type: "variable", value: "ReverseString"}
 
       //whenever we need a certain handling, handlers.js is used
       switch (token_type) {
-        case "VARIABLE":
+        case 'VARIABLE':
           //Here we seperate Message = 'Hello' into following three tokens :
 
           //1: {type: "variable", value: "Message"}
@@ -425,28 +390,28 @@ function Compile(sourcecode) {
           //3: {type: "value", value: "Hello"}
 
           let handled_variable = handleVariable(element, tokens, cleaned_sourcedata, i, nextEl, prevEl);
+          console.log('handled_variable:', handled_variable);
           let h = handled_variable;
           if (h != undefined) {
             try {
-              h.type === "variable" ? PushVariable(h, tokens) : console.log(`error in setting ${element}`);
+              h.type === 'variable' ? PushVariable(h, tokens) : console.log(`error in setting ${element}`);
             } catch (e) {
               console.log(e, `error in setting ${element}`);
             }
           }
           break;
         //Push variables to tokens
-        case "NUMBER":
+        case 'NUMBER':
           PushNumber(element, tokens);
           break;
 
         //Push EmptyStrings to tokens
-        case "EMPTY_STRING":
+        case 'EMPTY_STRING':
           //In some cases empty strings will be modified into something like "'" or '"'
           //We convert it back to " "
           try {
             let e = element;
-            e =
-              e.length > 1 && (e.charAt(0) === "'" || e.charAt(0) === '"') ? (e = e.replace(/['"]+/g, "")) : (e = " ");
+            e = e.length > 1 && (e.charAt(0) === "'" || e.charAt(0) === '"') ? (e = e.replace(/['"]+/g, '')) : (e = ' ');
 
             PushVariableValue(e, tokens);
           } catch (e) {
@@ -456,16 +421,17 @@ function Compile(sourcecode) {
 
         //Push Input to tokens
         //Format: {type: "AcceptInput", value: " ", AcceptAs: "Message"}
-        case "INPUT":
+        case 'INPUT':
           try {
             PushInput(element, tokens, cleaned_sourcedata, i);
+            console.log('element:', element);
           } catch (e) {
             console.log(e, `Error in setting Input ${element}`);
           }
           break;
         //Push operators to tokens. The accepted operators are =,},{
         //Format: {type: "operator", value: "="}
-        case "OPERATOR":
+        case 'OPERATOR':
           try {
             PushOperator(element, tokens);
           } catch (e) {
@@ -476,7 +442,7 @@ function Compile(sourcecode) {
         //Push keyowrds to tokens. The accepted keywords is दिखाए
 
         //Format: {type: "keyword", value: ActiveLangugaeKeywords.Print}
-        case "PRINT":
+        case 'PRINT':
           try {
             PushKeyword(element, tokens);
 
@@ -491,7 +457,7 @@ function Compile(sourcecode) {
           break;
         //Push functions to tokens
         //Format: {type: "function", value: "First", arguments: Array(2), FunctionInvocationExists: false, FunctionStack: Array(0), …}
-        case "FUNCTION":
+        case 'FUNCTION':
           try {
             PushFunctionData(element, tokens, cleaned_sourcedata, i);
           } catch (e) {
@@ -501,12 +467,12 @@ function Compile(sourcecode) {
 
         // Push array to tokens
 
-        case "ARRAY":
+        case 'ARRAY':
           //Format: {type: "Array", value: "[]"}
           //if empty array else build the array (To convert '[',1,2,3,4,']'  into [1,2,3,4]
           try {
             let e = element;
-            e.charAt(e.length - 1) === "]"
+            e.charAt(e.length - 1) === ']'
               ? PushArray(e, tokens)
               : function () {
                   let BuiltArray = BuildArray(e, i, cleaned_sourcedata);
@@ -521,7 +487,7 @@ function Compile(sourcecode) {
 
         //For operations like Numbers[a]=a
         //Format: {type: "SetArrayIndexValue", value: "Fibonacci[a]", ValueToSet: "a"}
-        case "SET_ARRAY_INDEX":
+        case 'SET_ARRAY_INDEX':
           try {
             PushSetArrayIndexValue(element, tokens, cleaned_sourcedata, i);
 
@@ -534,7 +500,7 @@ function Compile(sourcecode) {
 
         //For operations like a=Numbers[a], reverse of above
         //Format: {type: "GetArrayIndexValue", value: "Fibonacci[a-2]"}
-        case "GET_ARRAY_INDEX":
+        case 'GET_ARRAY_INDEX':
           try {
             PushGetArrayIndexValue(element, tokens, cleaned_sourcedata, i);
           } catch (e) {
@@ -547,7 +513,7 @@ function Compile(sourcecode) {
         //Push while loops to tokens
         //Format: {type: "WhileLoopStart", value: "जबतक"}, {type: "condition", value: "count<25"}
 
-        case "CONDITIONAL_KEYWORD":
+        case 'CONDITIONAL_KEYWORD':
           try {
             isWhileLoop(element) ? PushWhileLoop(element, tokens) : PushConditionalKeyword(element, tokens);
 
@@ -557,7 +523,7 @@ function Compile(sourcecode) {
 
             //Push conditions to tokens array
 
-            if (foundcondition != "") {
+            if (foundcondition != '') {
               PushCondition(foundcondition, tokens);
             }
           } catch (e) {
@@ -568,7 +534,7 @@ function Compile(sourcecode) {
 
         //Finding operations like Numbers.पुश(x)
         //Format: {type: "PushToArray", value: "Numbers.पुश(x)"}
-        case "PUSH_TO_ARRAY":
+        case 'PUSH_TO_ARRAY':
           try {
             PushToArray(element, tokens);
           } catch (e) {
@@ -580,7 +546,7 @@ function Compile(sourcecode) {
         // Format:
         // {type: "ForLoopStart", value: "दुहराओ"}
         // {type: "ForLoopArguments", iterator: "a", value: "(0,25)", iterationStart: "0", iterationEnd: "25"}
-        case "FOR_LOOP":
+        case 'FOR_LOOP':
           try {
             PushForLoop(element, tokens);
             PushForLoopAruguments(element, cleaned_sourcedata, i, tokens);
@@ -588,7 +554,7 @@ function Compile(sourcecode) {
             memory.push({
               name: nextEl,
               value: 0,
-              type: "ForLoopIterator",
+              type: 'ForLoopIterator',
             });
           } catch (e) {
             console.log(e, `Error in operating on for loop ${element}`);
@@ -597,7 +563,7 @@ function Compile(sourcecode) {
 
         //Pushing basic Calculations like 'length-1' to tokens
         //Format: {type: "Calculation", value: "length-1"}
-        case "CALCULATION":
+        case 'CALCULATION':
           /* red zone
   
           if (nextEl != undefined) {
@@ -616,21 +582,21 @@ function Compile(sourcecode) {
 
           try {
             let el = element;
-            let cal = "";
+            let cal = '';
             let count = 0;
             //   function findCalculation(cleaned_sourcedata, i) {
             let x = i;
             let d = 0;
 
-            while (isCalculation(cleaned_sourcedata[x]) || cleaned_sourcedata[x] == "+") {
+            while (isCalculation(cleaned_sourcedata[x]) || cleaned_sourcedata[x] == '+') {
               cal = cal + cleaned_sourcedata[x];
               count += 1;
               x++;
             }
 
-            function isMultiCalculation(c, op = "*+/-") {
-              if (c.includes("(") && c.includes(")")) {
-                let s = c.split("");
+            function isMultiCalculation(c, op = '*+/-') {
+              if (c.includes('(') && c.includes(')')) {
+                let s = c.split('');
                 s.forEach((el) => {
                   if (op.includes(el)) {
                     d = d + 1;
@@ -656,15 +622,13 @@ function Compile(sourcecode) {
             //  let cal = findCalculation();
 
             // to stop prevention of expressions like is"+ getting added as a calculation
-            !cal.includes('"') && !["/", "*", "'", '"'].includes(el.charAt(0))
-              ? PushCalculation(cal, tokens, cleaned_sourcedata, i, multiCal)
-              : console.log(`impure calculation terms ${el}`);
+            !cal.includes('"') && !['/', '*', "'", '"'].includes(el.charAt(0)) ? PushCalculation(cal, tokens, cleaned_sourcedata, i, multiCal) : console.log(`impure calculation terms ${el}`);
           } catch (e) {
             console.log(e, `Error in completing calculation ${element}`);
           }
           break;
 
-        case "REALTIME_PRINT":
+        case 'REALTIME_PRINT':
           //finding operations like print(x + 'y'). The RealTimePrint operations
 
           //Format: {type: "value", value: "('Reversed String-'+ ReverseString)", mode: "RealTimePrint"}
@@ -680,16 +644,14 @@ function Compile(sourcecode) {
 
           break;
 
-        case "STRING":
+        case 'STRING':
           //storing only the string values to tokens ( not the strings in print statements)
           try {
             let s = BuildString(element, i, cleaned_sourcedata);
 
-            s = s.replace(/['"]+/g, "");
+            s = s.replace(/['"]+/g, '');
 
-            !s.includes(ActiveLangugaeKeywords.Print)
-              ? PushString(s, tokens)
-              : console.log(`error in pushing string ${(s, element)}`);
+            !s.includes(ActiveLangugaeKeywords.Print) ? PushString(s, tokens) : console.log(`error in pushing string ${(s, element)}`);
           } catch (e) {
             console.log(e, `error in operating on string ${element}`);
           }
@@ -711,12 +673,12 @@ function Compile(sourcecode) {
         //Used to push functions and expressions
         //Unnecessary data is being passed through kalaam.
         //This was created for a temporary fix
-        case "FUNCTION_CALL":
+        case 'FUNCTION_CALL':
           try {
-            let CheckFunctionExpression = element.split("(");
+            let CheckFunctionExpression = element.split('(');
 
             let passedValues = RemoveBrackets(CheckFunctionExpression[1]);
-            passedValues = passedValues.split(",");
+            passedValues = passedValues.split(',');
 
             PushFunctionExecution(element, tokens, cleaned_sourcedata, i, passedValues);
           } catch (e) {
@@ -724,7 +686,7 @@ function Compile(sourcecode) {
           }
           break;
 
-        case "NATIVE_OPERATION":
+        case 'NATIVE_OPERATION':
           try {
             PushNativeOperation(element, tokens);
           } catch (e) {
@@ -732,7 +694,7 @@ function Compile(sourcecode) {
           }
           break;
 
-        case "ARRAY_PUSH":
+        case 'ARRAY_PUSH':
           try {
             PushArray(element, tokens);
           } catch (e) {
@@ -752,7 +714,7 @@ function Compile(sourcecode) {
       let token_type = mutable_tokens[j].type;
       let token_subtype = mutable_tokens[j].subtype;
 
-      let type = token === ActiveLangugaeKeywords.Print || token_type === "operator" ? token_subtype : token_type;
+      let type = token === ActiveLangugaeKeywords.Print || token_type === 'operator' ? token_subtype : token_type;
       //need to skip over some unncessary types
 
       //operators are not working correctly
@@ -760,51 +722,32 @@ function Compile(sourcecode) {
       try {
         if (isInterpretableType(type)) {
           switch (type) {
-            case "SetArrayIndexValue":
+            case 'SetArrayIndexValue':
               {
-                SetArrayIndexValue(
-                  mutable_tokens,
-                  j,
-                  j,
-                  memory,
-                  tokens,
-                  OriginalIterator,
-                  iterator,
-                  ExecutionStack,
-                  LinebylineSourcedata
-                );
+                SetArrayIndexValue(mutable_tokens, j, j, memory, tokens, OriginalIterator, iterator, ExecutionStack, LinebylineSourcedata);
               }
               break;
 
-            case "assignment": {
-              AssignorUpdateValues(
-                mutable_tokens,
-                j,
-                memory,
-                iterator,
-                OriginalIterator,
-                kalaam,
-                ExecutionStack,
-                LinebylineSourcedata
-              ); // eslint-disable-line
+            case 'assignment': {
+              AssignorUpdateValues(mutable_tokens, j, memory, iterator, OriginalIterator, kalaam, ExecutionStack, LinebylineSourcedata); // eslint-disable-line
 
               break;
             }
             //type=assignment
 
-            case "PushToArray":
+            case 'PushToArray':
               {
                 AddElementToArray(mutable_tokens, j, memory, ExecutionStack, LinebylineSourcedata);
               }
               break;
-            case "AcceptInput":
+            case 'AcceptInput':
               {
                 AcceptInputandSetValue(mutable_tokens, j, memory, ExecutionStack, LinebylineSourcedata);
               }
               break;
 
             //Whenever we encounter a function, we create a seperate execution context
-            case "function":
+            case 'function':
               {
                 //We are preparing the required data to execute a function call later in the prgroam
 
@@ -818,25 +761,17 @@ function Compile(sourcecode) {
                 let message = `इस ${ActiveLangugaeKeywords.Function} का नाम ${token} है जिसे हम कोड में बाद में NEW VALUES पास करके उपयोग कर सकते है|`;
 
                 let expression = `${ActiveLangugaeKeywords.Function} ${token}`;
-                let description = " एक विशिष्ट रूप से लिखा गया कोड जिसका हम बार बार उपयोग कर सकते है | ";
+                let description = ' एक विशिष्ट रूप से लिखा गया कोड जिसका हम बार बार उपयोग कर सकते है | ';
 
                 let position = findtokenPositioninCode(LinebylineSourcedata, expression, true);
                 if (position != undefined) {
-                  AddtoExecutionStack(
-                    ExecutionStack,
-                    ActiveLangugaeKeywords.Function,
-                    description,
-                    mutable_tokens[j].value,
-                    functionSourceData,
-                    message,
-                    position
-                  );
+                  AddtoExecutionStack(ExecutionStack, ActiveLangugaeKeywords.Function, description, mutable_tokens[j].value, functionSourceData, message, position);
                 }
                 skipInterpretation = functionSourceData.length;
               }
               break;
             //We are out of the fucntion execution context and back to global execution context
-            case "condition":
+            case 'condition':
               {
                 let element = token;
 
@@ -866,21 +801,13 @@ function Compile(sourcecode) {
                 }
 
                 let expression = element;
-                let description = "एक Certain Condition के तहत कोड Execution को Allow करता है। ";
+                let description = 'एक Certain Condition के तहत कोड Execution को Allow करता है। ';
 
                 expression = GetcleanedExpression(expression);
 
                 let position = findtokenPositioninCode(LinebylineSourcedata, expression, true);
                 if (position != undefined) {
-                  AddtoExecutionStack(
-                    ExecutionStack,
-                    ActiveLangugaeKeywords.If,
-                    description,
-                    element,
-                    ConditionValue,
-                    message,
-                    position
-                  );
+                  AddtoExecutionStack(ExecutionStack, ActiveLangugaeKeywords.If, description, element, ConditionValue, message, position);
                 }
               }
 
@@ -888,22 +815,21 @@ function Compile(sourcecode) {
             //So that we don't print a same value twice. First in global execution context and the in function context
 
             //This one prints the global context values
-            case "print":
+            case 'print':
               {
-                console.log("hrloo");
                 PrintEngine(mutable_tokens, memory, j); // eslint-disable-line
               }
               break;
 
             //This runs our while loop .i.e जबतक
-            case "WhileLoopStart":
+            case 'WhileLoopStart':
               {
                 skipInterpretation = 0;
                 let element = mutable_tokens[j + 1].value;
 
                 let ExtratcedVariable = [];
 
-                let variable = "";
+                let variable = '';
                 let WhileLoopSourcedataIndexStart = 0;
                 let WhileLoopSourcedataTokens = [];
 
@@ -921,7 +847,7 @@ function Compile(sourcecode) {
                       value: token.value,
                     });
 
-                    variable = "";
+                    variable = '';
                   }
                 }
 
@@ -931,36 +857,19 @@ function Compile(sourcecode) {
                   return StoreResult;
                 }
 
-                WhileLoopSourcedataIndexStart = getLoopIndexStart(
-                  mutable_tokens,
-                  j,
-                  "{",
-                  WhileLoopSourcedataIndexStart
-                );
+                WhileLoopSourcedataIndexStart = getLoopIndexStart(mutable_tokens, j, '{', WhileLoopSourcedataIndexStart);
 
-                WhileLoopSourcedataTokens = getWhileLoopSourcedata(
-                  WhileLoopSourcedataIndexStart,
-                  mutable_tokens,
-                  WhileLoopSourcedataTokens
-                ).StoreResult;
+                WhileLoopSourcedataTokens = getWhileLoopSourcedata(WhileLoopSourcedataIndexStart, mutable_tokens, WhileLoopSourcedataTokens).StoreResult;
 
-                let message = "जबतक " + element + " सही होगा तब तक आगे का कोड रन किया जायेगा ";
+                let message = 'जबतक ' + element + ' सही होगा तब तक आगे का कोड रन किया जायेगा ';
 
-                let description = "जबतक में दिए हुए शर्त(Condition) के पूरा होने तक आगे के कोड को रन करे |";
+                let description = 'जबतक में दिए हुए शर्त(Condition) के पूरा होने तक आगे के कोड को रन करे |';
 
                 let expression = GetcleanedExpression(element);
 
                 let position = findtokenPositioninCode(LinebylineSourcedata, expression, true);
                 if (position != undefined) {
-                  AddtoExecutionStack(
-                    ExecutionStack,
-                    ActiveLangugaeKeywords.While,
-                    description,
-                    element,
-                    WhileLoopSourcedataTokens,
-                    message,
-                    position
-                  );
+                  AddtoExecutionStack(ExecutionStack, ActiveLangugaeKeywords.While, description, element, WhileLoopSourcedataTokens, message, position);
                 }
 
                 //constantly accessing the conditionvalue
@@ -969,23 +878,14 @@ function Compile(sourcecode) {
                   for (let i = 0; i < WhileLoopSourcedataTokens.length; i++) {
                     //SECTION while loop context
 
-                    if (WhileLoopSourcedataTokens[i].value === "=") {
-                      AssignorUpdateValues(
-                        WhileLoopSourcedataTokens,
-                        i,
-                        memory,
-                        "",
-                        "",
-                        "",
-                        ExecutionStack,
-                        LinebylineSourcedata
-                      );
-                    } else if (WhileLoopSourcedataTokens[i].type === "AcceptInput") {
+                    if (WhileLoopSourcedataTokens[i].value === '=') {
+                      AssignorUpdateValues(WhileLoopSourcedataTokens, i, memory, '', '', '', ExecutionStack, LinebylineSourcedata);
+                    } else if (WhileLoopSourcedataTokens[i].type === 'AcceptInput') {
                       AcceptInputandSetValue(WhileLoopSourcedataTokens, i, memory, ExecutionStack);
                     }
 
                     // Handling CONDITIONAL statements in While loop
-                    else if (WhileLoopSourcedataTokens[i].type === "condition") {
+                    else if (WhileLoopSourcedataTokens[i].type === 'condition') {
                       //if index returns a value, it means condition is false and skip the execution
 
                       let index = HandleConditions(WhileLoopSourcedataTokens, i, memory);
@@ -1003,18 +903,8 @@ function Compile(sourcecode) {
                     }
 
                     //operations like Numbers[a]='xyz'
-                    else if (WhileLoopSourcedataTokens[i].type === "SetArrayIndexValue") {
-                      SetArrayIndexValue(
-                        WhileLoopSourcedataTokens,
-                        i,
-                        j,
-                        memory,
-                        tokens,
-                        OriginalIterator,
-                        iterator,
-                        ExecutionStack,
-                        LinebylineSourcedata
-                      );
+                    else if (WhileLoopSourcedataTokens[i].type === 'SetArrayIndexValue') {
+                      SetArrayIndexValue(WhileLoopSourcedataTokens, i, j, memory, tokens, OriginalIterator, iterator, ExecutionStack, LinebylineSourcedata);
                     }
                   }
                 }
@@ -1026,21 +916,13 @@ function Compile(sourcecode) {
               }
               break;
 
-            case "ForLoopStart":
+            case 'ForLoopStart':
               {
                 var FlagPrimalLoop = 0; // eslint-disable-line
 
                 var SourcedataTokens = [];
 
-                var {
-                  OriginalIterator,
-                  IterationStart,
-                  IterationEnd,
-                  iterator,
-                  element,
-                  ForLoopSourcedataIndexStart,
-                  Cycle,
-                } = ForLoopSetMetadata(mutable_tokens, j, memory);
+                var { OriginalIterator, IterationStart, IterationEnd, iterator, element, ForLoopSourcedataIndexStart, Cycle } = ForLoopSetMetadata(mutable_tokens, j, memory);
 
                 function getSourcedata(startIndex, mutable_tokens, StoreResult) {
                   let Returnvalue = HandleBlocks(mutable_tokens, startIndex, StoreResult);
@@ -1049,7 +931,7 @@ function Compile(sourcecode) {
                   return StoreResult;
                 }
 
-                ForLoopSourcedataIndexStart = getLoopIndexStart(mutable_tokens, j, "{", ForLoopSourcedataIndexStart);
+                ForLoopSourcedataIndexStart = getLoopIndexStart(mutable_tokens, j, '{', ForLoopSourcedataIndexStart);
 
                 SourcedataTokens = getSourcedata(ForLoopSourcedataIndexStart, mutable_tokens, SourcedataTokens);
 
@@ -1058,12 +940,11 @@ function Compile(sourcecode) {
                 });
 
                 //Checking if the for loop has one more for loop inside it
-                let FindNestedLoop = SourcedataTokens.find((el) => el.type === "ForLoopStart");
+                let FindNestedLoop = SourcedataTokens.find((el) => el.type === 'ForLoopStart');
 
                 if (FindNestedLoop != undefined) {
                   let NestedLoopindex = SourcedataTokens.indexOf(FindNestedLoop) + 3;
-                  let NestedLooplength =
-                    SourcedataTokens[NestedLoopindex].EndIndex - SourcedataTokens[NestedLoopindex].startIndex + 2;
+                  let NestedLooplength = SourcedataTokens[NestedLoopindex].EndIndex - SourcedataTokens[NestedLoopindex].startIndex + 2;
 
                   //if we have a nested loop, set isNesteLoop to TRUE
 
@@ -1072,47 +953,22 @@ function Compile(sourcecode) {
                   }
                 }
 
-                if (element.includes("(") && element.includes(",")) {
+                if (element.includes('(') && element.includes(',')) {
                   FlagPrimalLoop = 1;
                 }
 
                 //Iterating over forloop sourcedata
                 //self line 'iterator <= Cycle' determines start of the loop and the duration of the loop
 
-                let message =
-                  "दुहराओ के अंदर लिखे गए कोड को " +
-                  IterationStart +
-                  " से " +
-                  IterationEnd +
-                  " तक, मतलब " +
-                  eval(IterationEnd - IterationStart + 1) +
-                  " बार RUN(रन) किया जायेगा |" +
-                  "\n" +
-                  " इसमें Computer, " +
-                  '"' +
-                  iterator +
-                  '"' +
-                  " को Memory में, " +
-                  IterationStart +
-                  " से " +
-                  IterationEnd +
-                  " तक क़ीमत(Values) सेट करता जाएगा|";
+                let message = 'दुहराओ के अंदर लिखे गए कोड को ' + IterationStart + ' से ' + IterationEnd + ' तक, मतलब ' + eval(IterationEnd - IterationStart + 1) + ' बार RUN(रन) किया जायेगा |' + '\n' + ' इसमें Computer, ' + '"' + iterator + '"' + ' को Memory में, ' + IterationStart + ' से ' + IterationEnd + ' तक क़ीमत(Values) सेट करता जाएगा|';
 
                 //This is the experession whcih is getting evaluated.
-                let expression = "दुहराओ " + iterator + " को " + mutable_tokens[j + 1].value + " मे";
-                let description = "एक ही कोड को बार-बार दोहराना। ";
+                let expression = 'दुहराओ ' + iterator + ' को ' + mutable_tokens[j + 1].value + ' मे';
+                let description = 'एक ही कोड को बार-बार दोहराना। ';
                 let Linenumber = LinebylineSourcedata.indexOf(expression);
                 Linenumber += 1;
 
-                AddtoExecutionStack(
-                  ExecutionStack,
-                  ActiveLangugaeKeywords.For,
-                  description,
-                  SourcedataTokens,
-                  "",
-                  message,
-                  Linenumber
-                );
+                AddtoExecutionStack(ExecutionStack, ActiveLangugaeKeywords.For, description, SourcedataTokens, '', message, Linenumber);
 
                 for (iterator = IterationStart; iterator <= Cycle; iterator++) {
                   let forloopindex = memory.find((el) => el.name === OriginalIterator);
@@ -1145,7 +1001,7 @@ function Compile(sourcecode) {
 
               break;
             //END FOR LOOP EXECUTION
-            case "functionExecution": {
+            case 'functionExecution': {
               //checking if function is invoked somewhere later in the program
 
               //If we see a function execution call, for e.g Add(x,y), we prepare for execution
@@ -1174,8 +1030,8 @@ function Compile(sourcecode) {
               functionArguments.forEach((el, index) => {
                 let val = passedValues[index];
 
-                val = val.replace(/"/g, "");
-                val = val.replace(/'/g, "");
+                val = val.replace(/"/g, '');
+                val = val.replace(/'/g, '');
 
                 passedValues[index] = val;
 
@@ -1191,8 +1047,8 @@ function Compile(sourcecode) {
                     value: val,
 
                     identifier: j + index,
-                    type: "value",
-                    context: "FunctionExecutionContext",
+                    type: 'value',
+                    context: 'FunctionExecutionContext',
                   });
                 }
 
@@ -1205,7 +1061,7 @@ function Compile(sourcecode) {
 
                     identifier: j + index,
                     type: FindInUpdatedTokens.type,
-                    context: "FunctionExecutionContext",
+                    context: 'FunctionExecutionContext',
                     IntheEndSetValueto: val,
                   });
                 } else {
@@ -1216,7 +1072,7 @@ function Compile(sourcecode) {
 
                     identifier: j + index,
                     type: FindInUpdatedTokens.type,
-                    context: "FunctionExecutionContext",
+                    context: 'FunctionExecutionContext',
                     IntheEndSetValueto: val,
                   });
                 }
@@ -1226,35 +1082,16 @@ function Compile(sourcecode) {
 
               var CompleteTokenValueList = [...memory, ...functionContextmemory];
 
-              let message =
-                "Computer " +
-                '"' +
-                functionName +
-                '"' +
-                " नाम की रचना को कॉल (Call) करता है | आपने " +
-                '"()"' +
-                " के अंदर दिए गए New Values का रचना " +
-                functionName +
-                " में उपयोग करके, रचना " +
-                functionName +
-                " में लिखे गए कोड को रन करता है |";
+              let message = 'Computer ' + '"' + functionName + '"' + ' नाम की रचना को कॉल (Call) करता है | आपने ' + '"()"' + ' के अंदर दिए गए New Values का रचना ' + functionName + ' में उपयोग करके, रचना ' + functionName + ' में लिखे गए कोड को रन करता है |';
 
-              let expression = functionName + "(";
+              let expression = functionName + '(';
 
-              let description = " एक विशिष्ट रूप से लिखा गया कोड जिसका हम बार बार उपयोग कर सकते है | ";
+              let description = ' एक विशिष्ट रूप से लिखा गया कोड जिसका हम बार बार उपयोग कर सकते है | ';
 
               let position = findtokenPositioninCode(LinebylineSourcedata, expression, false);
 
               if (position != undefined) {
-                AddtoExecutionStack(
-                  ExecutionStack,
-                  ActiveLangugaeKeywords.Function,
-                  description,
-                  functionName,
-                  functionSourceData,
-                  message,
-                  position
-                );
+                AddtoExecutionStack(ExecutionStack, ActiveLangugaeKeywords.Function, description, functionName, functionSourceData, message, position);
               }
 
               //Now we start digging into the function execution
@@ -1293,13 +1130,18 @@ function Compile(sourcecode) {
     //#STEP 1- Cleaning the sourcedata and setting the 'result' to 'cleaned_sourcedata'
 
     //If a code is not working, it is probably because it's not cleaned properly.
+    // console.log('cleaned_sourcedata:', cleaned_sourcedata);
+
+    console.log('cleaned', cleaned_sourcedata);
+    console.log('tokens:', tokens);
+    console.log('memory:', memory);
 
     cleaned_sourcedata = GetCleanSourcedata(sourcedata, cleaned_sourcedata, mixedimpurity);
-    //console.log('cleaned_sourcedata:', cleaned_sourcedata)
 
     //#STEP 2- - Parsing cleaned_sourcedata, adding each item depending on it's type to tokens array
 
     // PARSING INITIATION
+
     (function _parser() {
       for (i; i < cleaned_sourcedata.length; i++) {
         _analyzeToken(cleaned_sourcedata, i, tokens);
@@ -1355,7 +1197,7 @@ function Compile(sourcecode) {
       });
     }
 
-    kalaam.linebylineOutput = kalaam.error.length > 0 ? kalaam.error : kalaam.output.split("\n");
+    kalaam.linebylineOutput = kalaam.error.length > 0 ? kalaam.error : kalaam.output.split('\n');
 
     //time taken to transpile the code is t1-t0
     var t1 = performance.now(); // eslint-disable-line
@@ -1366,13 +1208,13 @@ function Compile(sourcecode) {
     } else {
       kalaam.isError = true;
 
-      kalaam.TimeTaken = "Compilation Error: Check for assignement and declaration mistyping";
+      kalaam.TimeTaken = 'Compilation Error: Check for assignement and declaration mistyping';
     }
 
     //kalaam.linebylineoutput is what you will finally see on output screen
 
     kalaam.linebylineOutput = kalaam.linebylineOutput.filter(function (item) {
-      return item !== "";
+      return item !== '';
     });
 
     kalaam.ExecutionStack = ExecutionStack;
