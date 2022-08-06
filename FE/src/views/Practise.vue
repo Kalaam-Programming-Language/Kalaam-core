@@ -200,19 +200,29 @@
           <q-btn flat id="subm" @click="Add(Keyword.Print + '()')">{{
             Keyword.Print
           }}</q-btn>
-          <q-btn flat id="subm" @click="Add(Keyword.Input + '()')">{{Keyword.Input}}</q-btn>
+          <q-btn flat id="subm" @click="Add(Keyword.Input + '()')">{{
+            Keyword.Input
+          }}</q-btn>
 
           <q-btn flat id="subm" @click="Add(Keyword.If + '()')">{{
             Keyword.If
           }}</q-btn>
 
-          <q-btn flat id="subm" @click="Add(Keyword.For)">{{Keyword.For}}</q-btn>
+          <q-btn flat id="subm" @click="Add(Keyword.For)">{{
+            Keyword.For
+          }}</q-btn>
           <q-btn flat id="subm" @click="Add(Keyword.While + '()')">{{
             Keyword.While
           }}</q-btn>
-          <q-btn flat id="subm" @click="Add(Keyword.Length + '()')">{{Keyword.Length}}</q-btn>
-          <q-btn flat id="subm" @click="Add(Keyword.Push + '()')">{{Keyword.Push}}</q-btn>
-          <q-btn flat id="subm" @click="Add(Keyword.Function )">{{Keyword.Function}}</q-btn>
+          <q-btn flat id="subm" @click="Add(Keyword.Length + '()')">{{
+            Keyword.Length
+          }}</q-btn>
+          <q-btn flat id="subm" @click="Add(Keyword.Push + '()')">{{
+            Keyword.Push
+          }}</q-btn>
+          <q-btn flat id="subm" @click="Add(Keyword.Function)">{{
+            Keyword.Function
+          }}</q-btn>
         </div>
       </div>
 
@@ -355,7 +365,7 @@ export default {
 
       model: null,
 
-      options: ["Hindi", "Marathi","Bengali"],
+      options: ["Hindi", "Marathi", "Bengali", "Telugu"],
     };
   },
 
@@ -377,9 +387,12 @@ export default {
         localStorage.setItem("ActiveLangugae", this.ActiveLanguage);
 
         this.Keyword = KalaamKeywords.Marathi;
-      }else if(this.ActiveLanguage == "Bengali"){
-         localStorage.setItem("ActiveLangugae", this.ActiveLanguage);
-         this.Keyword = KalaamKeywords.Bengali;
+      } else if (this.ActiveLanguage == "Bengali") {
+        localStorage.setItem("ActiveLangugae", this.ActiveLanguage);
+        this.Keyword = KalaamKeywords.Bengali;
+      } else if (this.ActiveLanguage == "Telugu") {
+        localStorage.setItem("ActiveLangugae", this.ActiveLanguage);
+        this.Keyword = KalaamKeywords.Telugu;
       }
     },
   },

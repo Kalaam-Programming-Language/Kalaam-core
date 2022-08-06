@@ -47,6 +47,18 @@ var KalaamKeywords = {
     Langugae: 'Bengali',
     inputText: 'আপনি কি মান দিতে চান?',
   },
+  Telugu: {
+    Print: 'చూపించు', //Still have to change this manually where REGEX are implemented
+    Input: 'ఇన్పుట్',
+    If: 'ఉంటే',
+    For: 'పునరావృతం',
+    While: 'ఉండగా',
+    Length: 'లెక్కించండి' || 'length',
+    Push: 'పుష్',
+    Function: 'నిర్మాణము',
+    Langugae: 'Bengali',
+    inputText: 'మీరు ఏ ధర చెల్లించాలనుకుంటున్నారు',
+  },
 };
 
 if (ActiveLanguage == 'Hindi') {
@@ -59,6 +71,9 @@ if (ActiveLanguage == 'Marathi') {
 
 if (ActiveLanguage == 'Bengali') {
   ActiveLangugaeKeywords = KalaamKeywords.Bengali;
+}
+if (ActiveLanguage == 'Telugu') {
+  ActiveLangugaeKeywords = KalaamKeywords.Telugu;
 }
 //
 

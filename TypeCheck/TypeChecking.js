@@ -1,4 +1,4 @@
-import { ActiveLangugaeKeywords } from '../Compiler/constants';
+import { ActiveLangugaeKeywords, ActiveLanguage } from '../Compiler/constants';
 
 let _AK = ActiveLangugaeKeywords;
 const Keywords = [
@@ -40,10 +40,15 @@ function isArrayOperation(element) {
 
 export function isVariable() {
   return function (element) {
+    //https://unicode-table.com/en/alphabets/
     const HindiRegex = /(?:^|\s)[\u0900-\u097F]+?(?:\s|$)/g;
     const BengaliRegex = /(?:^|\s)[\u0980-\u09FB]+?(?:\s|$)/g;
+    const TeluguRegex = /(?:^|\s)[\u0C05-\u0C63]+?(?:\s|$)/g;
+    let al = ActiveLanguage;
+    let regex = al === 'Hindi' ? HindiRegex : al === 'Bengali' ? BengaliRegex : al === 'Telugu' ? TeluguRegex : console.log('none');
+    console.log('regex:', regex);
 
-    return /^[a-z]+$/i.test(element) || (BengaliRegex.test(element) && !Keywords.includes(element)) || (HindiRegex.test(element) && !Keywords.includes(element));
+    return (/^[a-z]+$/i.test(element) || regex.test(element)) && !Keywords.includes(element);
   };
 }
 export function isNumber() {
