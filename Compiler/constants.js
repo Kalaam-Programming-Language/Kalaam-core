@@ -69,6 +69,29 @@ const KalamOutputMessages = {
     description:
       "किसी VALUE को OUTPUT SCREEN पे दिखाने के लिए दिखाए() का उपयोग होता है।",
   },
+  Marathi: {
+    message: [
+      " संगणकाने तुम्हाला मूल्य दिले आहे, " + '"',
+      '"' + " दाखवले आहेत |",
+    ],
+    description: "आउटपुट स्क्रीनवर मूल्य दर्शविण्यासाठी दाखवा() वापरला जातो।",
+  },
+  Bengali: {
+    message: [
+      " Computer আপনার দেওয়া value, " + '"',
+      '"' + " কে দেখিয়েছে |",
+    ],
+    description:
+      "OUTPUT SCREEN এ একটি মান দেখানোর জন্য দেখাও() ব্যবহার করা হয়।",
+  },
+  Telugu: {
+    message: [
+      " Computer ने आपकी दी गयी वैल्यू, " + '"',
+      '"' + " को दिखाया है |",
+    ],
+    description:
+      "किसी VALUE को OUTPUT SCREEN पे दिखाने के लिए दिखाए() का उपयोग होता है।",
+  },
 };
 
 if (ActiveLanguage == "Hindi") {
