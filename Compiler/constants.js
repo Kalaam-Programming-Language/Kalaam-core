@@ -51,13 +51,13 @@ var KalaamKeywords = {
     Print: 'చూపించు', //Still have to change this manually where REGEX are implemented
     Input: 'ఇన్పుట్',
     If: 'ఉంటే',
-    For: 'పునరావృతం',
+    For: 'కోసం',
     While: 'ఉండగా',
     Length: 'లెక్కించండి' || 'length',
     Push: 'పుష్',
     Function: 'నిర్మాణము',
-    Langugae: 'Bengali',
-    inputText: 'మీరు ఏ ధర చెల్లించాలనుకుంటున్నారు',
+    Langugae: 'Telugu',
+    inputText: 'మీరు దీన్ని వేరియబుల్‌కి ఇవ్వాలనుకుంటున్న విలువ ఏమిటి?',
   },
 };
 
