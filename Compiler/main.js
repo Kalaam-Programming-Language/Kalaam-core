@@ -9,7 +9,7 @@
 //To check variable types: Number, String, Array etc.
 import * as TypeCheck from '../TypeCheck/TypeChecking';
 
-import { KalaamKeywords } from '../Compiler/constants';
+import { KalaamKeywords,KalamOutputMessages,ActiveLanguage } from '../Compiler/constants';
 
 //To check other operations like MultiString, Arithmetic Operation etc.
 import * as AdvancedTypeCheck from '../TypeCheck/AdvancedTypeChecking';
@@ -336,12 +336,13 @@ function Compile(sourcecode, ActiveLangugaeKeywords) {
         handleOutput(output + '\n', kalaam);
       }
 
-      let message = ' Computer ने आपकी दी गयी वैल्यू, ' + '"' + RemoveBrackets(NextTokenValue) + '"' + ' को दिखाया है |';
+      let message = KalamOutputMessages[ActiveLanguage].message[0]+ RemoveBrackets(NextTokenValue) + KalamOutputMessages[ActiveLanguage].message[1];
 
       //This is the experession whcih is getting evaluated.
 
       let expression = token + NextTokenValue;
-      let description = 'किसी VALUE को OUTPUT SCREEN पे दिखाने के लिए दिखाए() का उपयोग होता है।';
+      // let description = 'किसी VALUE को OUTPUT SCREEN पे दिखाने के लिए दिखाए() का उपयोग होता है।';
+      let description = KalamOutputMessages[ActiveLanguage].description;
 
       expression = GetcleanedExpression(expression);
 
