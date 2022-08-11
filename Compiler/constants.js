@@ -67,7 +67,7 @@ var KalaamKeywords = {
     While: 'ଯେପର୍ଯ୍ୟନ୍ତ',
     Length: 'ଦୈର୍ଘ୍ୟ' || 'length',
     Push: 'ପୁଶ୍',
-    Function: 'କାର୍ଯ୍ୟବିଭାଗ',
+    Function: 'ବିଭାଗ' || 'କାର୍ଯ୍ୟବିଭାଗ',
     Langugae: 'Odia',
     inputText: 'କୁ କେଉଁ ମୂଲ୍ୟ ଦେବାକୁ ଚାହୁଁଛନ୍ତି?',
   },
