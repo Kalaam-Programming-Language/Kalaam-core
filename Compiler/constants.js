@@ -90,7 +90,7 @@ if (ActiveLanguage == 'Telugu') {
 }
 
 if (ActiveLanguage == 'Odia') {
-  ActiveLangugaeKeywords = KalaamKeywords.Telugu;
+  ActiveLangugaeKeywords = KalaamKeywords.Odia;
 }
 //
 
