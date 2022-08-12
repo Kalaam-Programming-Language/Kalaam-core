@@ -59,6 +59,18 @@ var KalaamKeywords = {
     Langugae: 'Telugu',
     inputText: 'మీరు దీన్ని వేరియబుల్‌కి ఇవ్వాలనుకుంటున్న విలువ ఏమిటి?',
   },
+  Odia: {
+    Print: 'ଦେଖାଅ', //Still have to change this manually where REGEX are implemented
+    Input: 'ଇନପୁଟ୍',
+    If: 'ଯଦି',
+    For: 'ଦୋହରାଅ',
+    While: 'ଯେପର୍ଯ୍ୟନ୍ତ',
+    Length: 'ଦୈର୍ଘ୍ୟ' || 'length',
+    Push: 'ପୁଶ୍',
+    Function: 'ବିଭାଗ' || 'କାର୍ଯ୍ୟବିଭାଗ',
+    Langugae: 'Odia',
+    inputText: 'କୁ କେଉଁ ମୂଲ୍ୟ ଦେବାକୁ ଚାହୁଁଛନ୍ତି?',
+  },
 };
 
 if (ActiveLanguage == 'Hindi') {
@@ -72,7 +84,12 @@ if (ActiveLanguage == 'Marathi') {
 if (ActiveLanguage == 'Bengali') {
   ActiveLangugaeKeywords = KalaamKeywords.Bengali;
 }
+
 if (ActiveLanguage == 'Telugu') {
+  ActiveLangugaeKeywords = KalaamKeywords.Telugu;
+}
+
+if (ActiveLanguage == 'Odia') {
   ActiveLangugaeKeywords = KalaamKeywords.Telugu;
 }
 //
