@@ -44,9 +44,10 @@ export function isVariable() {
     const HindiRegex = /(?:^|\s)[\u0900-\u097F]+?(?:\s|$)/g;
     const BengaliRegex = /(?:^|\s)[\u0980-\u09FB]+?(?:\s|$)/g;
     const TeluguRegex = /(?:^|\s)[\u0C05-\u0C63]+?(?:\s|$)/g;
+    const OdiaRegex = /(?:^|\s)[\u0B05-\u0B32]+?(?:\s|$)/g;
+
     let al = ActiveLanguage;
-    let regex = al === 'Hindi' ? HindiRegex : al === 'Bengali' ? BengaliRegex : al === 'Telugu' ? TeluguRegex : console.log('none');
-    console.log('regex:', regex);
+    let regex = al === 'Hindi' ? HindiRegex : al === 'Bengali' ? BengaliRegex : al === 'Telugu' ? TeluguRegex : al === 'Odia' ? OdiaRegex : console.log('ERR: NO REGEX FOUND ');
 
     return (/^[a-z]+$/i.test(element) || regex.test(element)) && !Keywords.includes(element);
   };
